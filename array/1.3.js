@@ -13,7 +13,6 @@ Loop1: for (let i = 0; i < nums.length; i++) {
 }
 
 console.log(result);
-
 // let end = new Date();
 // console.log(end - start);
 // 4ms
