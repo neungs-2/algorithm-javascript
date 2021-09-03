@@ -1,8 +1,8 @@
-const NUMS = [1, 2, 3, 5, 6];
+const NUMS = [1, 2, 4, 6];
 const TARGET = 3;
 
-let gPointer = Math.ceil(NUMS.length / 2);
-let gScopeLength = Math.ceil(NUMS.length / 2);
+let gPointer = Math.floor(NUMS.length / 2);
+let gScopeLength = Math.floor(NUMS.length / 2);
 let gPreviousPointer = 0;
 let gCheckResult;
 
@@ -20,10 +20,10 @@ const checkAnswer = (array, target, pointer, scopeLength) => {
   } else if (array[pointer - 1] < target < array[pointer + 1]) {
     checkBothSide(array, target, pointer);
   } else if (target < array[pointer]) {
-    scopeLength = Math.ceil(scopeLength / 2);
+    scopeLength = Math.floor(scopeLength / 2);
     pointer = pointer - scopeLength;
   } else if (target > array[pointer]) {
-    scopeLength = Math.ceil(scopeLength / 2);
+    scopeLength = Math.floor(scopeLength / 2);
     pointer = pointer + scopeLength;
   }
 
@@ -35,6 +35,7 @@ while (true) {
   checkResult = checkAnswer(NUMS, TARGET, gPointer, gScopeLength);
   gPointer = checkResult[0];
   gScopeLength = checkResult[1];
+  console.log(checkResult);
   console.log(gPointer, gScopeLength, gPreviousPointer);
   if (gPointer === gPreviousPointer) break;
 }
