@@ -1,5 +1,5 @@
-const NUMS1 = [1, 3, 5, 7];
-const NUMS2 = [2, 4, 8];
+const NUMS1 = [1, 3, 4, 7, 10];
+const NUMS2 = [2, 3, 8, 9];
 
 const changesElement = (variable1, variable2) => {
   let movedElement = variable1;
