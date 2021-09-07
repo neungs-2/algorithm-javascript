@@ -5,9 +5,8 @@ let halfScope;
 
 // Data Cleansing
 const doDataCleansing = (str) => {
-  let dataArray = str.toLowerCase();
-  dataArray = dataArray.replace(/[^a-z0-9]/g, '');
-
+  let dataArray = str.replace(/[^A-Za-z0-9]/g, '');
+  dataArray = dataArray.toLowerCase();
   return dataArray;
 };
 
