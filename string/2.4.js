@@ -1,5 +1,9 @@
 const STRS = ['eat', 'repaid', 'paired', 'tea', 'bat'];
+const idxToWord = [];
 
+let gIndexArray;
+
+// 인풋 배열 단어 정렬
 const sortAlphabet = (strArray) => {
   const resultArray = [];
   let sortedWord;
@@ -12,10 +16,43 @@ const sortAlphabet = (strArray) => {
   return resultArray;
 };
 
-console.log(sortAlphabet(STRS));
+// 배열 내 특정 단어 모든 인덱스 반환
+const findsIndexes = (targetWord, array) => {
+  const idxArray = new Array();
+  let index = array.indexOf(targetWord);
 
-let sortedArray = sortAlphabet(STRS);
+  while (index != -1) {
+    idxArray.push(index);
+    index = array.indexOf(targetWord, index + 1);
+  }
 
-let idx;
+  return idxArray;
+};
 
-for (word of sortAlphabet)
+const isAnagram = (sortedArray) => {
+  const resultArray = [];
+  const sortedSet = new Set(sortedArray);
+  let idxArray;
+
+  sortedSet.forEach((element) => {
+    idxArray = findsIndexes(element, sortedArray);
+
+    if (resultArray.includes(idxArray) === false) {
+      resultArray.push(idxArray);
+    }
+  });
+
+  return resultArray;
+};
+
+gIndexArray = isAnagram(sortAlphabet(STRS));
+
+for (arr of gIndexArray) {
+  let wordArray = [];
+  for (idx of arr) {
+    wordArray.push(STRS[idx]);
+  }
+  idxToWord.push(wordArray);
+}
+
+console.log(idxToWord);
