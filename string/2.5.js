@@ -6,18 +6,18 @@ const checkIp = (str) => {
     '^((([0-9a-fA-F]{4})|0):){7}(([0-9a-fA-F]{4})|0)$'
   );
 
-  let result;
-
-  if (IPV4REG.test(str)) result = 'IPv4';
-  else if (IPV6REG.test(str)) result = 'IPv6';
-  else result = 'Neither';
+  const result = IPV4REG.test(str)
+    ? 'IPv4'
+    : IPV6REG.test(str)
+    ? 'IPv6'
+    : 'Neither';
 
   return result;
 };
 
-// let ipv4 = '123.902.0.0';
-// let ipv6 = 'A321:b321:0:0:0000:32C1:A31f:0321';
+let ipv4 = '123.255.140.240';
+let ipv6 = 'A321:b321:0:0:0000:32C1:A31f:0321';
 
-// console.log(checkIp(ipv4));
-// console.log(checkIp(ipv6));
-// console.log(checkIp('Developer'));
+console.log(checkIp(ipv4));
+console.log(checkIp(ipv6));
+console.log(checkIp('Developer'));
