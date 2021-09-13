@@ -39,14 +39,7 @@ LinkedList.prototype.traverse = function () {
 LinkedList.prototype.reverseList = function () {
   let cursor = this.head;
   let nextNode;
-  let previousNode;
-
-  if (cursor) {
-    nextNode = cursor.next;
-    cursor.next = null;
-    previousNode = cursor;
-    cursor = nextNode;
-  }
+  let previousNode = null;
 
   while (cursor) {
     nextNode = cursor.next;
@@ -64,6 +57,7 @@ linkedList.pushBack(11);
 linkedList.pushBack(12);
 linkedList.pushBack(13);
 linkedList.pushBack(14);
+linkedList.traverse();
 
 linkedList.reverseList();
 linkedList.traverse();
