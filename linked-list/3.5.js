@@ -51,7 +51,6 @@ LinkedList.prototype.traverse = function () {
 // 3.5 start
 LinkedList.prototype.isCycle = function () {
   let currentNode = this.head;
-  let circulation;
 
   while (currentNode) {
     if (currentNode.next !== this.head) {
