@@ -9,6 +9,7 @@ function createBinaryTree() {
   this.root = null;
 }
 
+// 데이터 삽입
 createBinaryTree.prototype.insert = function (data, treeNode = this.root) {
   const node = new createNode(data);
 
@@ -32,25 +33,23 @@ createBinaryTree.prototype.insert = function (data, treeNode = this.root) {
     }
   }
 
-  return this;
+  return treeNode; // 처음에 여기에 this를 넣으니 tree 내부에 tree가 들어가는 형태...
 };
 
-// createBinaryTree.prototype.inorder = function (node, result) {
-//   if (!node) return;
+createBinaryTree.prototype.search = function (data) {
+  let currentNode = this.root;
 
-//   this.inorder(node.left, result);
-//   result.push(node.data);
-//   this.inorder(node.right, result);
-// };
+  while (currentNode) {
+    if (currentNode.data === data) {
+      return true;
+    } else {
+      currentNode =
+        currentNode.data > data ? currentNode.left : currentNode.right;
+    }
+  }
 
-// createBinaryTree.prototype.traverse = function () {
-//   const result = [];
-//   let currentNode = this.root;
-
-//   this.inorder(currentNode, result);
-
-//   return result;
-// };
+  return false;
+};
 
 const btree = new createBinaryTree();
 
@@ -59,3 +58,6 @@ btree.insert(14);
 btree.insert(15);
 btree.insert(10);
 btree.insert(8);
+
+console.log(btree);
+console.log(btree.search(10));
