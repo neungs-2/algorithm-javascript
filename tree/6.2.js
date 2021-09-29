@@ -101,12 +101,12 @@ console.log(btree.search(14));
 btree.delete(14);
 console.log(btree);
 
-// /* tree structure
-//          10
-//       6     14
-//     4  9  12  16
-//   3         15  17
-// 1
-// */
-
 module.exports = { createNode, createBinaryTree, btree };
+
+/* tree structure
+         10
+      6     14
+    4  9  12  16
+  3         15  17
+1
+*/
