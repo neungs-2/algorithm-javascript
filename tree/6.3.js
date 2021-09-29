@@ -23,10 +23,8 @@ createBinaryTree.prototype.dfsIter = function () {
   const stack = [this.root];
   const result = [];
 
-  let node;
-
   while (stack.length !== 0) {
-    node = stack.pop();
+    const node = stack.pop();
     result.push(node.data);
 
     if (node.right) stack.push(node.right);
