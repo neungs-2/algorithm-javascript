@@ -36,7 +36,7 @@ createBinaryTree.prototype.insert = function (data, treeNode = this.root) {
 };
 
 // 데이터 탐색
-createBinaryTree.prototype.search = (data) => {
+createBinaryTree.prototype.search = function (data) {
   let currentNode = this.root;
 
   while (currentNode) {
@@ -70,7 +70,7 @@ createBinaryTree.prototype.delete = function (data) {
     if (currentNode === parentNode.left) parentNode.left = null;
     else parentNode.right = null;
   } else if (currentNode.left && currentNode.right) {
-    rightMin = this.min(currentNode.right).data;
+    rightMin = this.findMin(currentNode.right).data;
     this.delete(rightMin);
     currentNode.data = rightMin;
   } else {
@@ -83,7 +83,7 @@ createBinaryTree.prototype.delete = function (data) {
 };
 
 createBinaryTree.prototype.findMin = (node) => {
-  while (node) {
+  while (node.left) {
     node = node.left;
   }
 
@@ -91,15 +91,22 @@ createBinaryTree.prototype.findMin = (node) => {
 };
 
 const btree = new createBinaryTree();
+const dataArray = [10, 14, 16, 12, 17, 15, 6, 4, 3, 9, 1];
 
-btree.insert(13);
-btree.insert(14);
-btree.insert(15);
-btree.insert(10);
-btree.insert(8);
+dataArray.map((data) => btree.insert(data));
 
 console.log(btree);
-console.log(btree.search(10));
+console.log(btree.search(14));
 
 btree.delete(14);
 console.log(btree);
+
+// /* tree structure
+//          10
+//       6     14
+//     4  9  12  16
+//   3         15  17
+// 1
+// */
+
+module.exports = { createNode, createBinaryTree, btree };
