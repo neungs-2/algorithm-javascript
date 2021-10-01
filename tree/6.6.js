@@ -50,8 +50,6 @@ class BinaryTree {
     } else if (node.right) {
       this.cntPath(node.right, sum, count);
     }
-
-    return cnt;
   }
 }
 
@@ -72,5 +70,6 @@ console.log(bt);
   -3            12
 
 */
+
 const result = bt.cntPath(bt.root, 11);
 console.log('Path Count:', result);
