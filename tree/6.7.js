@@ -3,16 +3,18 @@ function findThird(array) {
     return Math.max(...array);
   }
 
+  const set = new Set(array);
+  const result = new Array(...set);
+
   array.sort((a, b) => {
-    if (a > b) return -1;
-    if (a === b) return 0;
-    if (a < b) return 1;
+    return b - a;
   });
 
-  return array[2];
+  console.log(result);
+  return result[2];
 }
 
-const dataArr = [4, 2, 7, 9, 6];
+const dataArr = [4, 2, 7, 9, 7, 2, 5];
 const dataArr2 = [1, 5];
 console.log(findThird(dataArr));
 console.log(findThird(dataArr2));
