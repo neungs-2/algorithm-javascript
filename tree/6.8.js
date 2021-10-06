@@ -6,9 +6,7 @@ console.log(
 );
 
 function invertTree(node) {
-  if (!node) {
-    return;
-  }
+  if (!node) return;
 
   const left = invertTree(node.left);
   const right = invertTree(node.right);
