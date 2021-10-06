@@ -1,17 +1,7 @@
 function findThird(array) {
-  if (array.length < 3) {
-    return Math.max(...array);
-  }
+  const result = [...new Set(array)];
 
-  const set = new Set(array);
-  const result = new Array(...set);
-
-  array.sort((a, b) => {
-    return b - a;
-  });
-
-  console.log(result);
-  return result[2];
+  return array.length > 2 ? array.sort((a, b) => b - a)[2] : Math.max(...array);
 }
 
 const dataArr = [4, 2, 7, 9, 7, 2, 5];
