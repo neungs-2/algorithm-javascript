@@ -1,33 +1,26 @@
 function solution(n, lost, reserve) {
-  let lostExceptReserve = [];
-  let reserveExceptLost = [];
-  let answer = 0;
-  // 안되면 정렬해보기
+  var answer = 0;
 
-  for (const i of lost) {
-    if (i in reserve) {
-      lostExceptReserve = lost.filter((e) => e !== i);
-      reserveExceptLost = reserve.filter((e) => e !== i);
+  // reserve 학생 중 lost 포함은 두 Arr에서 제외
+  const reserveButLost = reserve.filter((student) => lost.includes(student));
+  reserve = reserve.filter((student) => !reserveButLost.includes(student));
+  lost = lost.filter((student) => !reserveButLost.includes(student));
+
+  // lost 학생 Loop 돌며 -+1 번호 reserve 존재 확인 후 pop
+  for (lostStudent of lost) {
+    if (lostStudent - 1 in reserve) {
+      lost.splice(lost.indexOf(lostStudent), 1);
+      reserve.splice(reserve.indexOf(lostStudent - 1, 1));
+    } else if (lostStudent + 1 in reserve) {
+      lost.splice(lost.indexOf(lostStudent), 1);
+      reserve.splice(reserve.indexOf(lostStudent + 1, 1));
     }
   }
 
-  console.log(lostExceptReserve);
-  console.log(reserveExceptLost);
-
-  for (const lostStudent of lostExceptReserve) {
-    if (
-      (lostStudent - 1 in reserveExceptLost) |
-      (lostStudent + 1 in reserveExceptLost)
-    ) {
-      const lostIdx = lostExceptReserve.indexOf(lostStudent);
-      const reserveIdx = reserveExceptLost.indexOf(lostStudent);
-      lostExceptReserve.splice(lostIdx - 1, 1);
-      reserveExceptLost.splice(reserveIdx - 1, 1);
-    }
-  }
-
-  anwser = [...Array(n).keys()].unshift().filter(!(e in lostExceptReserve));
+  // n - lost.length 구하기
+  answer = n - lost.length;
 
   return answer;
 }
+
 console.log(solution(5, [2, 4], [1, 3, 5]));
