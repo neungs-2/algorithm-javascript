@@ -10,7 +10,9 @@ function solution(numbers, hand) {
     7: [2, 0],
     8: [2, 1],
     9: [2, 2],
+    '*': [3, 0],
     0: [3, 1],
+    '#': [3, 2],
   };
 
   const fixedAnswer = {
@@ -28,19 +30,19 @@ function solution(numbers, hand) {
   };
 
   for (let num of numbers) {
-    if (Object.keys(fixedAnswer).includes(num)) {
+    if (Object.keys(fixedAnswer).includes(num.toString())) {
       answer.push(fixedAnswer[num]);
-      location[fixedAnswer[num]] = keypad[fixedAnswer[num]];
+      location[fixedAnswer[num]] = keypad[num];
       continue;
     }
 
     const numLocation = keypad[num];
     const leftToNum =
-      (numLocation[0] - location['L'][0]) ** 2 +
-      (numLocation[1] - location['L'][1]) ** 2;
+      ((numLocation[0] - location['L'][0]) ** 2) ** 0.5 +
+      ((numLocation[1] - location['L'][1]) ** 2) ** 0.5;
     const rightToNum =
-      (numLocation[0] - location['R'][0]) ** 2 +
-      (numLocation[1] - location['R'][1]) ** 2;
+      ((numLocation[0] - location['R'][0]) ** 2) ** 0.5 +
+      ((numLocation[1] - location['R'][1]) ** 2) ** 0.5;
 
     if (leftToNum < rightToNum) {
       answer.push('L');
@@ -57,5 +59,5 @@ function solution(numbers, hand) {
   return answer.join('');
 }
 
-const sol = solution([1, 3, 4, 5, 8, 2, 1, 4, 5, 9, 5], 'right');
+const sol = solution([7, 0, 8, 2, 8, 3, 1, 5, 7, 6, 2], 'left');
 console.log(sol);
