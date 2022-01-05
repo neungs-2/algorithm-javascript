@@ -61,4 +61,6 @@
 - 오른쪽 자식의 인덱스 = (부모의 인덱스) \* 2 + 2
 - 부모의 인덱스 = (자식의 인덱스 - 1 ) / 2 --> (몫)
 
+그림의 인덱스는 - 1 해줘야 함. (잘못된 그림)
+
 ![image](https://user-images.githubusercontent.com/60606025/148167489-6ff76eac-dfdb-45fe-8754-d39cbde3f14c.png)
