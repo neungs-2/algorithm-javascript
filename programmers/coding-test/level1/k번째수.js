@@ -8,3 +8,11 @@ function solution(array, commands) {
 
   return answer;
 }
+
+// Refactoring
+function solution(array, commands) {
+  return commands.map((command) => {
+    const [from, to, pick] = command;
+    return array.slice(from - 1, to).sort((a, b) => a - b)[pick - 1];
+  });
+}
