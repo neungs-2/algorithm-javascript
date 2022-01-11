@@ -6,6 +6,17 @@ class LinkedList {
     this.size = 0;
   }
 
+  get(idx) {
+    let count = 0;
+    let node = this.head;
+    while (idx !== count) {
+      node = node.next;
+      ++count;
+    }
+
+    return node;
+  }
+
   append(data) {
     if (!this.head) {
       this.appendHead(data);
@@ -74,11 +85,13 @@ class LinkedList {
   }
 }
 
-const ll = new LinkedList();
-ll.append(3);
-ll.append(1);
-ll.append(5);
-ll.append(3);
-ll.append(4);
-console.log(ll.removeDups());
-console.log(ll.retrieve());
+module.exports = LinkedList;
+
+// const ll = new LinkedList();
+// ll.append(3);
+// ll.append(1);
+// ll.append(5);
+// ll.append(3);
+// ll.append(4);
+// console.log(ll.removeDups());
+// console.log(ll.retrieve());
