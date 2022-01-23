@@ -23,38 +23,40 @@ const quickSort = (arr) => {
 };
 
 // In Place
-//--> ZeroCho님 코드보고 다시 구현해보기
-const partition = (arr, left, right, pivot) => {
-  let swap;
-  
+const swap = (arr, idx1, idx2) => {
+  let temp = arr[idx1];
+  arr[idx1] = arr[idx2];
+  arr[idx2] = temp;
+};
+
+const partition = (arr, left, right, pivotIdx) => {
+  const pivot = arr[pivotIdx];
+
   while (left <= right) {
     while (arr[left] < pivot) left++;
     while (arr[right] > pivot) right--;
 
     if (left <= right) {
-      swap = arr[left];
-      arr[left] = arr[right];
-      arr[right] = swap;
+      swap(arr, left, right);
       left++;
       right--;
     }
   }
+  swap(arr, left, pivotIdx);
   return left;
-}
+};
 
 function quickSort(arr, left = 0, right = arr.length - 1) {
   if (left >= right) return;
 
-  const pivot = arr[parseInt(arr.length / 2)];
-  const partition = divide(arr, left, right, pivot);
+  let pivotIdx = right;
+  pivotIdx = partition(arr, left, right - 1, pivotIdx);
 
-  quickSort(arr, left, partition - 1);
-  quickSort(arr, partition, right);
+  if (left < pivotIdx - 1) quickSort(arr, left, pivotIdx - 1);
+  if (right > pivotIdx + 1) quickSort(arr, pivotIdx + 1, right);
 
-  
   return arr;
 }
-
 
 const answer = quickSort([5, 1, 1, 0, 0]);
 console.log(answer);
