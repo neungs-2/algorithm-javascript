@@ -30,6 +30,3 @@ const merge = (frontArr, backArr) => {
 
   return result;
 };
-
-const array = [3, 5, 6, 2, 4, 1, 7];
-console.log(mergeSort(array));
