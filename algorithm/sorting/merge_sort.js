@@ -1,5 +1,7 @@
 // 시간 복잡도 O(NlogN)
 
+// 1. Array를 활용한 방법
+// const t0 = performance.now();
 const mergeSort = (arr) => {
   if (arr.length <= 2) return arr[0] <= arr[1] ? arr : [arr[1], arr[0]];
 
@@ -27,4 +29,10 @@ const mergeSort = (arr) => {
   return sortedArr;
 };
 
-console.log(mergeSort([3, 4, 5, 1, 6, 8, 7, 5]));
+// const array = [];
+// for (let i = 0; i < 1000; i++) {
+//   array.push(parseInt(Math.random() * 1000));
+// }
+// console.log(mergeSort(array));
+// const t1 = performance.now();
+// console.log(t1 - t0); // 평균 5 ms
