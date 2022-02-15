@@ -31,7 +31,9 @@ function solution2(record) {
   record.forEach((log) => {
     const [state, id, nick] = log.split(' ');
 
-    if (state !== 'Change') action.push([state, id]);
+    if (state !== 'Change') {
+      action.push([state, id]);
+    }
 
     if (state === 'Enter' || state === 'Change') {
       userObj[id] = nick;
