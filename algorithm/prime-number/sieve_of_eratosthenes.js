@@ -21,9 +21,9 @@ function eratosthenes(range) {
   // 탐색 범위를 줄이기 위해 range의 제곱근까지만 i 반복
   // 배수를 제외시키기 위한 j는 i의 제곱부터 탐색
   // i의 제곱보다 작은 배수는 이미 해당 숫자보다 작은 소수의 배수를 제거할 때 처리됨
-  for (let i = 2; i * i <= range.length; i++) {
+  for (let i = 2; i * i <= range; i++) {
     if (arr[i]) {
-      for (let j = i * i; j <= n; j += i) {
+      for (let j = i * i; j <= range; j += i) {
         arr[j] = false;
       }
     }
@@ -31,5 +31,3 @@ function eratosthenes(range) {
 
   return arr.filter((v) => v).length;
 }
-
-console.log(eratosthenes(10));
