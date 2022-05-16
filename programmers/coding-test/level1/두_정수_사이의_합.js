@@ -22,7 +22,7 @@ function solution3(a, b) {
   ).reduce((pre, cur) => pre + cur, 0);
 }
 
-// 제일 성능 좋은 코드
+// 성능 좋은 코드
 // 위의 로직은 reduce를 사용하기 위해 Array를 만드는 과정에서 시간소요가 큰 듯.
 // 어차피 reduce도 내부에서 루프가 돌기 때문에 루프를 배제하기 위해 사용할 필요는 없을 듯.
 function solution4(a, b) {
@@ -34,4 +34,10 @@ function solution4(a, b) {
   }
 
   return answer;
+}
+
+// 가장 성능 좋은 로직
+// 가우스 덧셈 이용
+function solution5 (a, b) {
+  return (a + b) * ( Math.abs(a - b)  + 1) / 2
 }
