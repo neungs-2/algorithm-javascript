@@ -1,17 +1,13 @@
 function solution(n) {
-  let answer = 1 + n;
+  let answer = 0;
 
-  for (let i = 2; i * i < n; i++) {
-    if (n % i === 0) {
+  for (var i = 1; i * i <= n; i++) {
+    if (!(n % i)) {
       answer += i + n / i;
     }
   }
 
-  if (n ** 0.5 % 1 === 0) {
-    answer += n ** 0.5;
-  }
+  i--;
 
-  return answer;
+  return n / i === i ? answer - i : answer;
 }
-
-console.log(solution(12));
