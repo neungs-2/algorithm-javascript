@@ -11,3 +11,7 @@ const solution = (a, b, n) => {
 
   return answer;
 };
+
+// 참고할 풀이
+const awesomeSolution = (a, b, n) =>
+  Math.floor(Math.max(n - b, 0) / (a - b)) * b;
